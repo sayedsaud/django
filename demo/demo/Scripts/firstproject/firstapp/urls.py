@@ -20,7 +20,7 @@ from .import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',v.hello),
-    path('home',v.home),
+    path('',v.home),
+    path('add',v.addemp),
     
 ]
