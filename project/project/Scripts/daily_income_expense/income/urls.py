@@ -24,6 +24,7 @@ urlpatterns = [
     path('incomelist',v.income_list,name='inclist'),
     path('delete/<int:inid>',v.delete_inc),
     path('income_search',v.income_search,name='income_search'),
+    path('income/<str:inct2>',v.sort_by_incometype,name='inct1')
     
     
 ]

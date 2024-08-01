@@ -4,7 +4,7 @@
 
 <form action="{%url 'income:income_search'%}" method="post">
     {%csrf_token%}
-    <textarea name="srch" id="" rows="3" cols="60"></textarea>
+    <textarea name="srch" id="" rows="1" cols="60"></textarea>
     <input type="submit" value="search">
 </form>
 
@@ -30,4 +30,29 @@
     </tr>
     {%endfor%}
 </table>
+<style>
+.rside{
+    width:250px;
+    height: 100%;
+    background-color: rgb(166, 225, 228);
+    position: fixed;
+    right: 0%;
+    top: 0%;
+}
+h3{
+    margin: 20px;
+    padding: 20px;
+}
+.rside a{
+    text-decoration: none;
+    color: rgb(6, 26, 33);
+} 
+</style>
+<div class="rside">
+    <h2>Short By Income_type</h2>
+    <h3><a href="{%url 'income:inclist'%}">All</a></h3>
+    {%for i in inct%}
+    <h3><a href="{%url 'income:inct1' i%}">{{i}}</a></h3>
+    {%endfor%}
+</div>
 {%endblock%}
