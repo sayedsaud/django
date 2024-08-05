@@ -21,4 +21,12 @@ from .import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',v.home),
+    path('addemp',v.EmpRegister.as_view()),
+    path('add',v.addemp.as_view()),
+    path('elist',v.emp_list.as_view()),
+    path('delete1/<int:pk>',v.delete1_emp.as_view()),
+    path('delete2/<int:pk>',v.delete2_emp.as_view()),
+    path('edit/<int:pk>',v.edit_emp.as_view()),
+
+
 ]
