@@ -29,4 +29,7 @@ class Cart(models.Model):
 
 
     class Meta:
-        db_table='cart'                
+        db_table='cart'
+
+    def __str__(self):
+        return self.Product.p_name                    

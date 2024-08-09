@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from .models import Product,Cart
 from django.contrib.auth.models import User
+from django.views.generic import DeleteView
 # Create your views here.
 def home(request):
     return render(request,'home.html')
@@ -66,3 +67,21 @@ def cart_list(request):
     cl=Cart.objects.filter(user_id=uid)
     context={'cl':cl}
     return render(request,'cartlist.html',context)
+
+class delete_cart(DeleteView):
+    template_name='delete.html'
+    model=Cart
+    success_url='/cartlist'
+
+
+def cart_view(request):
+    cart_items = Cart.objects.filter(user=request.user)  # Example query, modify as needed
+    total_bill = 0
+    for item in cart_items:
+        item.sub_total = item.Product.p_price * item.Product.p_quantity
+        total_bill += item.sub_total
+    context = {
+        'cl': cart_items,
+        'total_bill': total_bill,
+    }
+    return render(request, 'cart.html', context)
